@@ -27,25 +27,33 @@ model_run<-function(model_input = NULL)
 
 
 get_default_input <- function() {
-  # replace the function below with default model inputs for the new Prism model.
-  # for example, for bode package we will have:
-  # model_input <- list(FEV1                   = 40,
-  #                     mMRC                   = 3,
-  #                     BMI                    = 22,
-  #                     walk                   = 100)
-  #
-  # for cfmortality package, we will have:
-  # model_input <- list(age                    = 16,
-  #                     male                   = 0,
-  #                     fvc                    = 66.7,
-  #                     fev1                   = 47.4,
-  #                     fev1LastYear           = 80.5,
-  #                     bcepacia               = 0,
-  #                     underweight            = 0,
-  #                     nHosp                  = 0,
-  #                     pancreaticInsufficient = 1,
-  #                     CFRelatedDiabetes      = 0,
-  #                     ageAtDiagnosis         = 0.9)
+
+  predictors <- data.frame(fev1_0=1,
+                           fvc_0=3,
+                           age=50,
+                           triglycerides=NA,
+                           hematocrit=NA,
+                           albumin=NA,
+                           globulin=NA,
+                           ALP=NA,
+                           WBC=NA,
+                           QRS_intv=NA,
+                           wine=NA,
+                           cocktail=NA,
+                           height=180,
+                           smoke_year=NA,
+                           daily_cigs=NA,
+                           sex="female",
+                           broncho="",
+                           dyspnea_exc="",
+                           night_sym="",
+                           alcohol_indx=NA)
+
+  fev1_full_file_name = paste("./",paste(file_name(), collapse=""), "-fev1", ".rds",sep="")
+  fev1_lmer_function_output <- readRDS(fev1_full_file_name)
+
+  model_input <- list(resp_var='fev1', lmfin=fev1_lmer_function_output, predictors=predictors)
+
   return((flatten_list(model_input)))
 }
 
