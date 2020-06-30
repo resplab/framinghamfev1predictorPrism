@@ -2,28 +2,28 @@ model_run<-function(model_input = NULL)
 {
 
     input<-unflatten_list(model_input)
-    predictors <- data.frame(fev1_0=model_input$fev1_0,
-                             fvc_0=model_input$fvc_0,
-                             age=model_input$age,
-                             triglycerides=model_input$triglycerides,
-                             hematocrit=model_input$hematocrit,
-                             albumin=model_input$albumin,
-                             globulin=model_input$globulin,
-                             ALP=model_input$ALP,
-                             WBC=model_input$WBC,
-                             QRS_intv=model_input$QRS_intv,
-                             wine=model_input$wine,
-                             beer=model_input$beer,
-                             cocktail=model_input$cocktail,
-                             height=model_input$height,
-                             smoke_year=model_input$smoke_year,
-                             daily_cigs=model_input$daily_cigs,
-                             sex=model_input$sex,
-                             broncho=model_input$broncho,
-                             dyspnea_exc=model_input$dyspnea_exc,
-                             night_sym=model_input$night_sym)
-    results <- make_predictions(resp_var=model_input$resp_var,
-                                predictors=predictors)
+    # predictors <- data.frame(fev1_0=model_input$fev1_0,
+    #                          fvc_0=model_input$fvc_0,
+    #                          age=model_input$age,
+    #                          triglycerides=model_input$triglycerides,
+    #                          hematocrit=model_input$hematocrit,
+    #                          albumin=model_input$albumin,
+    #                          globulin=model_input$globulin,
+    #                          ALP=model_input$ALP,
+    #                          WBC=model_input$WBC,
+    #                          QRS_intv=model_input$QRS_intv,
+    #                          wine=model_input$wine,
+    #                          beer=model_input$beer,
+    #                          cocktail=model_input$cocktail,
+    #                          height=model_input$height,
+    #                          smoke_year=model_input$smoke_year,
+    #                          daily_cigs=model_input$daily_cigs,
+    #                          sex=model_input$sex,
+    #                          broncho=model_input$broncho,
+    #                          dyspnea_exc=model_input$dyspnea_exc,
+    #                          night_sym=model_input$night_sym)
+    results <- framinghamPredictor::make_predictions(resp_var=model_input$resp_var,
+                                predictors=model_input$predictors)
 
     return(as.list(results))
 }
@@ -31,28 +31,7 @@ model_run<-function(model_input = NULL)
 
 get_default_input <- function() {
 
-  predictors <- data.frame(fev1_0=1,
-                           fvc_0=3,
-                           age=50,
-                           triglycerides=NA,
-                           hematocrit=NA,
-                           albumin=NA,
-                           globulin=NA,
-                           ALP=NA,
-                           WBC=NA,
-                           QRS_intv=NA,
-                           wine=NA,
-                           beer=NA,
-                           cocktail=NA,
-                           height=180,
-                           smoke_year=NA,
-                           daily_cigs=NA,
-                           sex="female",
-                           broncho="",
-                           dyspnea_exc="",
-                           night_sym="")
-
-  model_input <- list(resp_var='fev1', predictors=predictors)
+  model_input <- list(resp_var='fev1', predictors=framinghamPredictor::sample_predictors)
 
   return((flatten_list(model_input)))
 }
