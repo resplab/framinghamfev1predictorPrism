@@ -22,8 +22,8 @@ model_run<-function(model_input = NULL)
     #                          broncho=model_input$broncho,
     #                          dyspnea_exc=model_input$dyspnea_exc,
     #                          night_sym=model_input$night_sym)
-    results <- framinghamPredictor::make_predictions(resp_var=model_input$resp_var,
-                                predictors=model_input$predictors)
+    results <- framinghamPredictor::make_predictions(resp_var=input$resp_var,
+                                predictors=input$predictors)
 
     return(as.list(results))
 }
