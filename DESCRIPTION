@@ -1,15 +1,15 @@
-Package: bridgePrism
-Title: Peer Models Network PRISM Bridge for the Model MODELNAME
+Package: framinghamPrism
+Title: Peer Models Network PRISM Bridge for the Model framinghamPredictor
 Version: 0.0.0.9000
 Authors@R: c(
     person("Amin", "Adibi", email = "adibi@alumni.ubc.ca", role = c("aut", "cph")),
     person("Mohsen", "Sadatsafavi", email = "mohsen.sadatsafavi@ubc.ca", role = c("aut", "cre")),
     person(given = "First",
            family = "Last",
-           role = c("aut", "cre"),
+           role = c("aut"),
            email = "first.last@example.com",
            comment = c(ORCID = "YOUR-ORCID-ID")))
-Description: Peer Model Network PRISM wrapper for MODELNAME.
+Description: Peer Model Network PRISM wrapper for framinghamPredictor.
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
