@@ -30,7 +30,6 @@ gateway<-function(...)
   func<-arguments$func
 
   session_id<-arguments$session_id
-
   if(is.null(session_id)) session_id=""
 
   session_id<<-session_id
@@ -54,11 +53,12 @@ gateway<-function(...)
 #' @export
 prism_model_run<-function(model_input=NULL)
 {
-  return(model_run(model_input))
+  session_id<<-generate_session_id()
+  thisSession$session_id = session_id
+  return(list(results=model_run(model_input), session_id=session_id))
 }
 
-
-#In API-based use without session ids this might seem a bit reduntant (it will not be required). But still good to check model availability
+#In API-based use without session ids this might seem a bit redundant (it will not be required). But still good to check model availability
 connect_to_model<-function(api_key="")
 {
   model_name<-environmentName(environment(connect_to_model))
@@ -82,17 +82,6 @@ generate_session_id<-function()
   id<-paste(c(sample(letters,1) , sample(c(letters,0:9),9,TRUE)),collapse="")
   return(id)
 }
-
-
-
-#' #' @export
-#' prism_get_output_structure<-function()
-#' {
-#'   out<-list(
-#'     n_agents=prism_output(source="$n_agents", type = "numeric/scalar", group = "", title = "Number of simulated individuals", description = ""),
-#'   )
-#'   return(out)
-#' }
 
 
 set_var<-function(variable,value)
