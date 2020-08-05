@@ -2,7 +2,7 @@
 
 export(gateway)
 export(prism_model_run)
-import(framinghamFEV1Predictor)
+import(framinghamfev1predictor)
 import(httr)
 import(jsonlite)
 import(rredis)
