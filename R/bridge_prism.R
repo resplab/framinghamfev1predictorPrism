@@ -6,7 +6,7 @@ model_run<-function(model_input = NULL)
     if(is.null(model_input$predictors)) {
       model_input<-unflatten_list(model_input)
     }
-    results <- framinghamPredictor::make_predictions(resp_var=model_input$resp_var,
+    results <- framinghamFEV1Predictor::make_predictions(resp_var=model_input$resp_var,
                                 predictors=model_input$predictors)
 
     return(as.list(results))
@@ -15,7 +15,7 @@ model_run<-function(model_input = NULL)
 
 get_default_input <- function() {
 
-  model_input <- list(resp_var='fev1', predictors=framinghamPredictor::sample_predictors)
+  model_input <- list(resp_var='fev1', predictors=framinghamFEV1Predictor::sample_predictors)
 
   return((flatten_list(model_input)))
 }
