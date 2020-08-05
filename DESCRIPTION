@@ -1,14 +1,13 @@
-Package: framinghamPrism
+Package: framinghamPredictorPrism
 Title: Peer Models Network PRISM Bridge for the Model framinghamPredictor
-Version: 0.0.0.9000
+Version: 0.0.1
 Authors@R: c(
     person("Amin", "Adibi", email = "adibi@alumni.ubc.ca", role = c("aut", "cph")),
     person("Mohsen", "Sadatsafavi", email = "mohsen.sadatsafavi@ubc.ca", role = c("aut", "cre")),
-    person(given = "First",
-           family = "Last",
+    person(given = "Ainsleigh",
+           family = "Hill",
            role = c("aut"),
-           email = "first.last@example.com",
-           comment = c(ORCID = "YOUR-ORCID-ID")))
+           email = "ainsleighhill@gmail.com"))
 Description: Peer Model Network PRISM wrapper for framinghamPredictor.
 License: GPL-3
 Encoding: UTF-8
@@ -17,4 +16,4 @@ Imports:
     jsonlite,
     rredis
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.0
+RoxygenNote: 7.1.1
