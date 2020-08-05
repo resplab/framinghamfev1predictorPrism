@@ -1,6 +1,6 @@
 #' @import jsonlite
 #' @import rredis
 # import main model package here. For example:
-#' @import framinghamPredictor
+#' @import framinghamFEV1Predictor
 #' @import httr
 NULL
