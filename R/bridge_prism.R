@@ -13,7 +13,7 @@ model_run<-function(model_input = NULL)
 }
 
 
-get_default_input <- function() {
+prism_get_default_input <- function() {
 
   model_input <- list(resp_var='fev1', predictors=framinghamfev1predictor::sample_predictors)
 
